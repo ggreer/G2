@@ -1,0 +1,2 @@
+export PYTHONPATH="/home/ggreer/pydj/apps/:/home/ggreer/pydj/:$PYTHONPATH"
+
