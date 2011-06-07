@@ -1,0 +1,149 @@
+# Django settings for blah project.
+
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+
+ADMINS = (
+    # ('Your Name', 'your_email@domain.com'),
+)
+
+MANAGERS = ADMINS
+
+DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_NAME = 'pydj'             # Or path to database file if using sqlite3.
+DATABASE_USER = 'pydj'             # Not used with sqlite3.
+DATABASE_PASSWORD = ''         # Not used with sqlite3.
+DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
+DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+
+# Local time zone for this installation. Choices can be found here:
+# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
+# although not all choices may be available on all operating systems.
+# If running in a Windows environment this must be set to the same as your
+# system time zone.
+TIME_ZONE = 'America/Chicago'
+
+# Language code for this installation. All choices can be found here:
+# http://www.i18nguy.com/unicode/language-identifiers.html
+LANGUAGE_CODE = 'en-us'
+
+SITE_ID = 1
+
+# If you set this to False, Django will make some optimizations so as not
+# to load the internationalization machinery.
+USE_I18N = True
+
+# Absolute path to the directory that holds media.
+# Example: "/home/media/media.lawrence.com/"
+MEDIA_ROOT = '/var/www/pydj/playlist/images/'
+
+# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+# trailing slash if there is a path component (optional in other cases).
+# Examples: "http://media.lawrence.com", "http://example.com/media/"
+MEDIA_URL = '/images/'
+
+# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
+# trailing slash.
+# Examples: "http://foo.com/media/", "/media/".
+ADMIN_MEDIA_PREFIX = '/media/'
+
+# Make this unique, and don't share it with anybody.
+SECRET_KEY = ''
+
+# List of callables that know how to import templates from various sources.
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.load_template_source',
+    'django.template.loaders.app_directories.load_template_source',
+#     'django.template.loaders.eggs.load_template_source',
+)
+
+MIDDLEWARE_CLASSES = (
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+)
+
+ROOT_URLCONF = 'pydj.urls'
+
+TEMPLATE_DIRS = (
+    '/var/www/pydj/playlist/templates/',
+    '/var/www/pydj/apps/forum/templates/',
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+)
+
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+#    'django.contrib.messages',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.admin',
+    'pydj.playlist',
+#    'pydj.forum',
+    'django.contrib.markup',
+)
+
+AUTH_PROFILE_MODULE='playlist.UserProfile'
+
+LOGIN_REDIRECT_URL='/playlist'
+
+LOGIN_URL='/login'
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.contrib.messages.context_processors.messages',
+    'playlist.context.listenersContextProcessor',
+    'playlist.context.newReportsContextProcessor',
+    'playlist.context.newEditsContextProcessor',
+    'playlist.context.positionContextProcessor',
+    'playlist.context.commentProcessor',
+    'playlist.context.nowPlayingContextProcessor',
+    'playlist.context.SQLLogContextProcessor',
+    'playlist.context.siteContext',
+)
+
+IMAGES_DIR='/var/www/pydj/playlist/images/'
+
+LOGIC_DIR='/var/www/pydj/playlist/logic/'
+
+SHOW_QUERIES=False
+ICES_CONF='/var/www/pydj/playlist/logic/ices.conf'
+STREAMINFO_URL='http://example.com/'
+
+#Set this to something random and secret. It's used for the ices streaming source to query G2 for the next song to play.
+NEXT_PASSWORD='changeme'
+
+#Set this to the maximum allowed upload size, in bytes.
+MAX_UPLOAD_SIZE=1073741824 # 1GB
+
+#Set this to the maximum allowed song length, in seconds. Longer songs may still be uploaded, but will be auto-banned.
+MAX_SONG_LENGTH='7200' # 2 hours
+
+#Set this to the maximum number of songs each user can have in playlist at a time
+PLAYLIST_MAX=50
+
+#Set this to the maximum number of minutes a user can occupy on the playlist. This is a soft limit, they can add a song that exceeds this limit, but cannot add more songs after that. In other words, if their time on the playlist exceeds this value, they cannot add more songs.
+PLAYLIST_SOFT_TIME_LIMIT=120
+
+#Set this to the time until a song can be added again, in hours
+REPLAY_INTERVAL=0
+
+#Doesn't do anything at the moment, but you still need to define it. Set to false, I guess.
+IS_LIVE=False
+
+#Set this to 0
+FILE_UPLOAD_MAX_MEMORY_SIZE=0
+
+#Set to the site's title, which will be displayed in the page title on every page
+SITE_TITLE='Dongs'
+
+#Set this to the URL that the Listen link should point to.
+LISTEN_URL='http://example.com/listen.m3u'
+
+DEAD_AIR_TRACK='/var/www/pydj/playlist/logic/bees.mp3'
