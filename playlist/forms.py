@@ -117,12 +117,12 @@ class ReportForm(forms.ModelForm):
 
   
 class NewRegisterForm(forms.Form):
-  saname = forms.CharField(max_length=30, label="SA Username:")
-  password1 = forms.CharField(max_length=30, label="Desired Password:", widget=forms.PasswordInput)
+  saname = forms.CharField(max_length=30, label="Username:")
+  password1 = forms.CharField(max_length=30, label="Password:", widget=forms.PasswordInput)
   password2 = forms.CharField(max_length=30, label="Confirm Password:", widget=forms.PasswordInput)
   email = forms.EmailField(label="E-mail Address:")
   randcode = forms.CharField(max_length=32, widget=forms.HiddenInput)
-      
+ 
   def clean(self):
     if self.cleaned_data['password1'] != self.cleaned_data['password2']:
       raise forms.ValidationError, "Passwords must match"
@@ -134,7 +134,7 @@ class NewRegisterForm(forms.Form):
   def clean_saname(self):
     try:
       User.objects.get(username=self.cleaned_data['saname'])
-      raise forms.ValidationError, "Username already registered. If you're not happy about this, PM Jonnty."
+      raise forms.ValidationError, "Username already registered."
     except User.DoesNotExist:
       return self.cleaned_data['saname'] 
       
