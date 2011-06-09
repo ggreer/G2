@@ -2,7 +2,7 @@
 import urllib
 import os
 import sys
-sys.path.append("/home/jonnty/")
+sys.path.append("/home/ggreer/")
 import pydj.settings
 
 NEXT_URL="http://localhost/next/"+pydj.settings.NEXT_PASSWORD
