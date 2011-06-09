@@ -32,13 +32,13 @@
   {% endif %}
   </ul>
   
-  <p> Approving this will <em>{% if report.duplicate %}merge{% else %}{% if report.corrupt %}delete{% else %}{% if report.not_music %}ban{% else %}do nothing to{% endif %}{% endif %}{% endif %}</em> this dong.</p>
+  <p> Approving this will <em>{% if report.duplicate %}merge{% else %}{% if report.corrupt %}delete{% else %}{% if report.not_music %}ban{% else %}do nothing to{% endif %}{% endif %}{% endif %}</em> this song.</p>
   <p><a href="{% url playlist.views.reports approve=report.id %}">(approve)</a> <a href="{% url playlist.views.reports deny=report.id %}">(deny)</a></p>
   
   
   </div>
 {% empty %}
-No reports at the moment. Our dongs are being very obedient. 
+No reports at the moment. Our songs are being very obedient. 
 {% endfor %}
 
 </div>

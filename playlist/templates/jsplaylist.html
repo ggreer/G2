@@ -141,7 +141,7 @@ $(document).ready(function(){
     <tbody id='playlist'> 
       {% if user.get_profile.tokens %}
         <tr><th colspan="7" class="plinfo">
-          You have {{user.get_profile.tokens}} token{{user.get_profile.tokens|pluralize}}, so you can add extra dongs to the playlist!
+          You have {{user.get_profile.tokens}} token{{user.get_profile.tokens|pluralize}}, so you can add extra songs to the playlist!
         </th></tr>
       {% endif %}
       <tr><th colspan="7" id="length">{% include "pl_length.html" %}</th></tr>

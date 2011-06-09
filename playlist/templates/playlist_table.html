@@ -46,14 +46,14 @@
         <td class="actions"> 
           {% if entry.favourite %}
             <a href='{% url playlist.views.unfavourite entry.object.song.id %}'> 
-              <img src="images/heart_delete.png" title="Remove this dong from your favourites" alt="unfavourite" /> 
+              <img src="images/heart_delete.png" title="Remove this song from your favourites" alt="unfavourite" /> 
             </a> 
           {% else %}
             <a href='{% url playlist.views.favourite entry.object.song.id %}'> 
               {% if request.user.username != "Beelzebozo" %}
-              <img src="images/heart_add.png" title="Add this dong to your favourites" alt="favourite" /> 
+              <img src="images/heart_add.png" title="Add this song to your favourites" alt="favourite" /> 
               {% else %}
-              <img src="images/heart_add_beelz.png" title="Add this dong to your favourites" alt="favourite" /> 
+              <img src="images/heart_add_beelz.png" title="Add this song to your favourites" alt="favourite" /> 
               {% endif %}
             </a> 
           {% endif %}

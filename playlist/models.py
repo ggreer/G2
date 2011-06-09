@@ -108,7 +108,7 @@ class UserProfile(models.Model):
   tokens = models.IntegerField(default=0)
   
   #settings
-  s_playlistHistory = models.IntegerField(default=10, help_text="Number of previously played dongs shown") 
+  s_playlistHistory = models.IntegerField(default=10, help_text="Number of previously played songs shown") 
   
   def __unicode__(self): return self.name
 
@@ -121,18 +121,18 @@ class UserProfile(models.Model):
       Song.objects.get(sha_hash=upload.info['sha_hash'])
     except Song.DoesNotExist: pass
     else:
-      self.user.message_set.create(message="The dong '%s' is already in the database" % upload.info['title'])
+      self.user.message_set.create(message="The song '%s' is already in the database" % upload.info['title'])
       raise DuplicateError, "song already in database"
     
     if os.path.getsize(upload.file) > settings.MAX_UPLOAD_SIZE:
-      self.user.message_set.create(message="The dong %s too big" % upload.info['title'])
+      self.user.message_set.create(message="The song %s too big" % upload.info['title'])
       raise FileTooBigError
     
     upload.info['uploader'] = self.user
     s = upload.store()
     
     if s.length > settings.MAX_SONG_LENGTH: #11 mins
-      s.ban("Autobahned because the dong is too long. Ask a mod to unban it if you want to play it.")
+      s.ban("Autobahned because the song is too long. Ask a mod to unban it if you want to play it.")
     s.save()
     
     self.user.get_profile().uploads += 1
@@ -348,7 +348,7 @@ class SongReport(models.Model):
       return #song has gone!
       
     if self.not_music:
-      self.song.ban("This dong is not music.")
+      self.song.ban("This song is not music.")
       
   def deny(self, actioner):
     """Deny the report"""

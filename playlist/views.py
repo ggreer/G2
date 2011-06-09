@@ -679,7 +679,7 @@ def song_report(request, songid):
       report.song = song
       report.reporter = request.user
       report.save()
-      request.user.message_set.create(message="Dong successfully reported.")
+      request.user.message_set.create(message="Song successfully reported.")
       return HttpResponseRedirect(reverse('song', kwargs={'songid': songid}))
     else:
       for field in report_form:
@@ -1079,9 +1079,9 @@ def add(request, songid=0):
     
   if oldtokens != profile.tokens:
       if profile.tokens:
-        msg = "You already had a dong on the playlist, so you've used up a token to add this one. You have %d left" % (profile.tokens)
+        msg = "You already had a song on the playlist, so you've used up a token to add this one. You have %d left" % (profile.tokens)
       else:
-        msg = "You already had a dong on the playlist, so you've used up a token to add this one. That was your last one!"
+        msg = "You already had a song on the playlist, so you've used up a token to add this one. That was your last one!"
       if not isajax:
         request.user.message_set.create(message=msg)
       else:
@@ -1092,7 +1092,7 @@ def add(request, songid=0):
   if song.isOrphan(): 
     song.uploader = request.user
     song.save()
-    msg = "This dong was an orphan, so you have automatically adopted it. Take good care of it!"
+    msg = "This song was an orphan, so you have automatically adopted it. Take good care of it!"
     if isajax:
       toret.append(msg)
     else:

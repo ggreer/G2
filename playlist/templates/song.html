@@ -15,35 +15,35 @@
 <div style="float: right; font-size: 24px; font-weight: bold; color: grey;">{{song.id}}</div>
 <table>
 <tr> 
-  <th class="song" colspan="2">Dong 
+  <th class="song" colspan="2">Song 
   </th>
 </tr>
 <tr>
     <td colspan="2">
       <a href='{% url playlist.views.song song.id,"/edit" %}'>
-        <img src="/images/page_edit.png" title="Edit dong info" alt="edit" />
+        <img src="/images/page_edit.png" title="Edit song info" alt="edit" />
       </a>
 
       {% if can_delete %}
         <a href='{% url playlist.views.deletesong song.id %}'>
-          <img src="/images/cross.png" title="Delete dong" alt="delete" />
+          <img src="/images/cross.png" title="Delete song" alt="delete" />
         </a>
       {% endif %}
       {% if favourite %}
         <a href='{% url playlist.views.unfavourite song.id %}'>
-          <img src="/images/heart_delete.png" title="Unfavourite this dong" alt="unfavourite" />
+          <img src="/images/heart_delete.png" title="Unfavourite this song" alt="unfavourite" />
         </a>
       {% else %}
         <a href='{% url playlist.views.favourite song.id %}'>
           {% if request.user.username != "Beelzebozo" %}
-            <img src="images/heart_add.png" title="Add this dong to your favourites" alt="favourite" />
+            <img src="images/heart_add.png" title="Add this song to your favourites" alt="favourite" />
           {% else %}
-            <img src="images/heart_add_beelz.png" title="Add this dong to your favourites" alt="favourite" />
+            <img src="images/heart_add_beelz.png" title="Add this song to your favourites" alt="favourite" />
           {% endif %}
         </a>
       {% endif %}
       <a href='{% url playlist.views.song_report song.id %}'>
-        <img src="images/exclamation.png" title="Report this dong" alt="report" />
+        <img src="images/exclamation.png" title="Report this song" alt="report" />
       </a>
     </td>
 {% if edit %}
