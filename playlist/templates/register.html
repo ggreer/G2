@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>{% block title %}{{ sitetitle }}{% endblock %}</title>
+    <!-- <style type="text/css">
+      div.playlist {margin-left: auto; margin-right:auto; width: 640px;}
+    </style> -->
+    <link href="images/regstyle.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+          <div class="heed"><h1>{{ sitetitle }}</h1></div>
+  <div class="playlist">
+  <p class="regreg">Register:</p> 
+    <form enctype="multipart/form-data" action="/register" method="POST"> 
+    {% csrf_token %}
+    <p>
+      {{ form.as_p }}
+      <input type="submit" value="Verify Account and Register" /> 
+    </p> 
+    </form> 
+	</div> 
+	</body> 
+</html> 
