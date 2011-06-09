@@ -57,7 +57,7 @@ from playlist.upload import UploadedFile
 from playlist.search import Search
 from playlist.cue import CueFile
 from playlist.pllib import Playlist
-from sa import SAProfile, IDNotFoundError
+#from sa import SAProfile, IDNotFoundError
 
 
 
@@ -1155,7 +1155,7 @@ def newregister(request):
       authcode = get_authcode(form.cleaned_data['randcode'])
       error = None
       randcode = form.cleaned_data['randcode']
-      
+      '''
       try:
         profile = SAProfile(username)  
       except URLError:
@@ -1171,7 +1171,7 @@ def newregister(request):
         
         if not profile.has_authcode(authcode):
           error = "Verification code not found on your profile."
-        
+      '''
       if len(User.objects.filter(username__iexact=username)):  
         error = "This username has already been taken. Please contact Jonnty to get a different one."
          
